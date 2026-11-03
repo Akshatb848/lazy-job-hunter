@@ -1,0 +1,16 @@
+{
+ "id": "meera", "name": "Meera Shah (fictional test profile)", "email": "meera.test@example.com", "city": "Mumbai",
+ "target_roles": ["marketing", "growth", "brand", "product marketing", "performance marketing", "customer success"],
+ "years_exp": 1, "locations": ["Mumbai", "Bengaluru", "Bangalore", "Gurugram", "Gurgaon", "Remote", "India"],
+ "summary": "MBA (Marketing) with one year running paid and lifecycle campaigns for a D2C brand.",
+ "skills": ["Meta Ads", "Google Ads", "Google Analytics", "Email marketing", "Excel", "Canva", "Copywriting", "Market research"],
+ "experience": [
+  {"org": "SnackSmart D2C (fictional)", "role": "Marketing Associate", "dates": "Jun 2025 - Present", "bullets": [
+   {"id": "x1", "text": "Ran Meta and Google Ads campaigns with a monthly budget of Rs 8 lakh, lowering cost per order from Rs 410 to Rs 310 over 5 months"},
+   {"id": "x2", "text": "Wrote and tested 12 email and WhatsApp flows for repeat buyers; the win-back flow brought back about 900 lapsed customers"},
+   {"id": "x3", "text": "Built weekly Excel reports on channel ROI for the founders"}]}],
+ "projects": [
+  {"org": "MBA live project", "role": "Market entry study for a fitness app", "dates": "2024", "bullets": [
+   {"id": "p1", "text": "Surveyed 300 gym-goers in Mumbai and recommended a Rs 199 starter plan, which the client piloted"}]}],
+ "education": ["MBA Marketing, NMIMS (fictional record), 2025", "B.Com, Mumbai University (fictional record), 2023"]
+}

@@ -1,0 +1,2 @@
+# one profile per line (make yours with: python make_profile.py your_resume.pdf)
+profiles/rohan_sde2.json

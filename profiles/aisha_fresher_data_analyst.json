@@ -1,0 +1,17 @@
+{
+ "id": "aisha", "name": "Aisha Verma (fictional test profile)", "email": "aisha.test@example.com", "city": "Bengaluru",
+ "target_roles": ["data analyst", "business analyst", "analytics", "product analyst"],
+ "years_exp": 0, "locations": ["Bengaluru", "Bangalore", "Remote", "India", "Hyderabad", "Pune"],
+ "summary": "Final-year B.Tech (CSE) student who turns messy data into dashboards and decisions.",
+ "skills": ["SQL", "Python", "Pandas", "Excel", "Power BI", "Statistics", "Data cleaning", "A/B testing basics"],
+ "experience": [
+  {"org": "QuickKart (fictional)", "role": "Data Analyst Intern", "dates": "May 2026 - Jul 2026", "bullets": [
+   {"id": "x1", "text": "Built a Power BI dashboard tracking daily orders and returns for 3 city warehouses, used by the ops team in weekly reviews"},
+   {"id": "x2", "text": "Wrote SQL queries to find the top 20 return reasons, which led ops to change packaging for 2 product lines"},
+   {"id": "x3", "text": "Cleaned 1.2 lakh rows of order data in Python (Pandas), cutting manual Excel work for the team by about 4 hours a week"}]}],
+ "projects": [
+  {"org": "College project", "role": "IPL match outcome analysis", "dates": "2025", "bullets": [
+   {"id": "p1", "text": "Analysed 15 seasons of IPL ball-by-ball data in Python and showed toss decisions had a weak link to match results"},
+   {"id": "p2", "text": "Presented findings to 60 students at the college data club"}]}],
+ "education": ["B.Tech Computer Science, RV College (fictional record), 2027 expected, CGPA 8.4"]
+}

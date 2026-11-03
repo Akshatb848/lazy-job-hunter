@@ -1,0 +1,17 @@
+{
+ "id": "rohan", "name": "Rohan Iyer (fictional test profile)", "email": "rohan.test@example.com", "city": "Pune",
+ "target_roles": ["software engineer", "backend engineer", "sde", "software developer", "full stack"],
+ "years_exp": 2, "locations": ["Pune", "Bengaluru", "Bangalore", "Hyderabad", "Remote", "India", "Mumbai"],
+ "summary": "Backend engineer with 2 years building payment and notification services in Java and Node.js.",
+ "skills": ["Java", "Spring Boot", "Node.js", "TypeScript", "PostgreSQL", "Redis", "REST APIs", "Azure", "Docker", "Git"],
+ "experience": [
+  {"org": "PayLoop Fintech (fictional)", "role": "Software Engineer", "dates": "Jul 2024 - Present", "bullets": [
+   {"id": "x1", "text": "Built a refund service in Java and Spring Boot that handles about 40,000 refunds a day"},
+   {"id": "x2", "text": "Cut p95 latency of the payment-status API from 900 ms to 250 ms by adding Redis caching"},
+   {"id": "x3", "text": "Moved 6 Node.js notification jobs to Azure Functions, removing 2 always-on servers"},
+   {"id": "x4", "text": "Wrote PostgreSQL migrations and on-call runbooks; handled 30+ production incidents as part of a 5-person rotation"}]}],
+ "projects": [
+  {"org": "Side project", "role": "Expense splitter app", "dates": "2023", "bullets": [
+   {"id": "p1", "text": "Built a TypeScript and Node.js expense-splitting web app used by about 150 college friends"}]}],
+ "education": ["B.E. Information Technology, Pune University (fictional record), 2024"]
+}

@@ -1,0 +1,172 @@
+[
+ {
+  "type": "lever",
+  "token": "paytm",
+  "company": "Paytm"
+ },
+ {
+  "type": "greenhouse",
+  "token": "okta",
+  "company": "Okta"
+ },
+ {
+  "type": "greenhouse",
+  "token": "databricks",
+  "company": "Databricks"
+ },
+ {
+  "type": "greenhouse",
+  "token": "mongodb",
+  "company": "MongoDB"
+ },
+ {
+  "type": "greenhouse",
+  "token": "zscaler",
+  "company": "Zscaler"
+ },
+ {
+  "type": "greenhouse",
+  "token": "stripe",
+  "company": "Stripe"
+ },
+ {
+  "type": "greenhouse",
+  "token": "inmobi",
+  "company": "InMobi"
+ },
+ {
+  "type": "lever",
+  "token": "meesho",
+  "company": "Meesho"
+ },
+ {
+  "type": "ashby",
+  "token": "sarvam",
+  "company": "Sarvam AI"
+ },
+ {
+  "type": "greenhouse",
+  "token": "gitlab",
+  "company": "GitLab"
+ },
+ {
+  "type": "lever",
+  "token": "zeta",
+  "company": "Zeta"
+ },
+ {
+  "type": "greenhouse",
+  "token": "glance",
+  "company": "Glance"
+ },
+ {
+  "type": "lever",
+  "token": "fampay",
+  "company": "FamPay"
+ },
+ {
+  "type": "greenhouse",
+  "token": "coinbase",
+  "company": "Coinbase"
+ },
+ {
+  "type": "greenhouse",
+  "token": "elastic",
+  "company": "Elastic"
+ },
+ {
+  "type": "greenhouse",
+  "token": "hackerrank",
+  "company": "HackerRank"
+ },
+ {
+  "type": "lever",
+  "token": "cred",
+  "company": "CRED"
+ },
+ {
+  "type": "greenhouse",
+  "token": "druva",
+  "company": "Druva"
+ },
+ {
+  "type": "greenhouse",
+  "token": "groww",
+  "company": "Groww"
+ },
+ {
+  "type": "greenhouse",
+  "token": "twilio",
+  "company": "Twilio"
+ },
+ {
+  "type": "greenhouse",
+  "token": "airbnb",
+  "company": "Airbnb"
+ },
+ {
+  "type": "greenhouse",
+  "token": "figma",
+  "company": "Figma"
+ },
+ {
+  "type": "ashby",
+  "token": "composio",
+  "company": "Composio"
+ },
+ {
+  "type": "ashby",
+  "token": "notion",
+  "company": "Notion"
+ },
+ {
+  "type": "lever",
+  "token": "hevodata",
+  "company": "Hevodata"
+ },
+ {
+  "type": "greenhouse",
+  "token": "celonis",
+  "company": "Celonis"
+ },
+ {
+  "type": "greenhouse",
+  "token": "rubrik",
+  "company": "Rubrik"
+ },
+ {
+  "type": "lever",
+  "token": "mindtickle",
+  "company": "Mindtickle"
+ },
+ {
+  "type": "ashby",
+  "token": "signoz",
+  "company": "Signoz"
+ },
+ {
+  "type": "greenhouse",
+  "token": "samsara",
+  "company": "Samsara"
+ },
+ {
+  "type": "ashby",
+  "token": "atlan",
+  "company": "Atlan"
+ },
+ {
+  "type": "greenhouse",
+  "token": "toast",
+  "company": "Toast"
+ },
+ {
+  "type": "greenhouse",
+  "token": "agoda",
+  "company": "Agoda"
+ },
+ {
+  "type": "lever",
+  "token": "pocketfm",
+  "company": "Pocketfm"
+ }
+]

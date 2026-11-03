@@ -1,0 +1,11 @@
+runs/
+logs/
+state/
+tmp/
+__pycache__/
+*.bak
+.env
+profiles/*.json
+!profiles/rohan_sde2.json
+!profiles/aisha_fresher_data_analyst.json
+!profiles/meera_mba_marketing.json
