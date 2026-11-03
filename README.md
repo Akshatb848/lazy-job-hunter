@@ -11,14 +11,6 @@ Every morning before 8 AM your Telegram gets:
 
 It never applies for you. You read 3 jobs, you apply yourself.
 
-| Your Telegram every morning | Tailored resume (yellow = reworded, amber = missing) | Referral draft |
-|---|---|---|
-| ![Top 3 jobs in Telegram](docs/telegram_top3.jpg) | ![Tailored resume](docs/tailored_resume.jpg) | ![Referral DM draft](docs/referral_dm.jpg) |
-
-*Screenshots are from a real run on a fictional test resume.*
-
----
-
 ## 📱 Came here from Instagram?
 
 Setup needs a **laptop** (Windows is easiest; Mac works too) and takes about **20 minutes, once**. After that it runs by itself every morning.
@@ -30,6 +22,23 @@ Setup needs a **laptop** (Windows is easiest; Mac works too) and takes about **2
 3. Your first top 3 lands in Telegram. 🎉
 
 **Cost:** free with a free NVIDIA AI key and a free Telegram bot. A Claude key is optional, for better tailoring.
+
+---
+
+## What you get every morning
+*From a real run on a fictional test resume.*
+
+**1. Your top 3 jobs in Telegram, with why you fit**
+
+![Top 3 jobs in Telegram](docs/telegram_top3.jpg)
+
+**2. A resume tailored to each job** (yellow = reworded from your own lines, amber box = what's missing, never added)
+
+![Tailored resume](docs/tailored_resume.jpg)
+
+**3. A referral message ready to send**
+
+![Referral DM draft](docs/referral_dm.jpg)
 
 ---
 
