@@ -1,100 +1,120 @@
 # Lazy Job Hunter: setup guide
 
-Every morning before 8 AM, your Telegram gets:
-- the top 3 **new** jobs in India that fit your resume, each with a match score and the reasons
-- what you're **missing** for each job (flagged, never added to your resume)
-- a resume PDF tailored to each job, using **only facts already in your resume**
-- a referral message draft you can send to someone at that company
+About **20 minutes, once**. After that your top 3 jobs arrive in Telegram every morning before 8 AM.
 
-It never applies for you. You read the 3 jobs and apply yourself.
+**You need:** a laptop (Windows 10/11 is easiest, Mac notes at the end) · Telegram on your phone · your resume as a PDF or Word file (a text PDF, not a scanned photo) · Google Chrome or Microsoft Edge.
 
-**Time to set up:** about 20 minutes, once.
-**Cost:** free with the NVIDIA key and a free Telegram bot. With a Claude key it uses a little of your Anthropic credit each morning, and falls back to NVIDIA when that runs out.
+Copy each command exactly. Lines in grey boxes are typed into PowerShell and run with **Enter**.
 
 ---
 
-## What you need
-- A Windows laptop (Mac/Linux works too; only step 7 is Windows-only)
-- Python 3.10 or newer: [python.org/downloads](https://www.python.org/downloads/). When installing, tick **"Add Python to PATH"**.
-- Google Chrome or Microsoft Edge (for the resume PDFs)
-- Your resume as a PDF or DOCX (a text PDF, not a scanned photo)
-- Telegram on your phone
+## Step 1. Install Python (5 min, skip if you have it)
+1. Go to [python.org/downloads](https://www.python.org/downloads/) and install the latest Python 3.
+2. On the first install screen, **tick "Add python.exe to PATH"**, then click Install.
 
-## 1. Download and install
-Download the ZIP: [github.com/Akshatb848/lazy-job-hunter/archive/refs/heads/main.zip](https://github.com/Akshatb848/lazy-job-hunter/archive/refs/heads/main.zip) (or **Code → Download ZIP** on the repo page).
-Unzip the folder anywhere, for example `D:\jobhunter`. Open PowerShell in that folder and run:
-```
-pip install -r requirements.txt
-```
+## Step 2. Download Lazy Job Hunter (2 min)
+1. Download **[the ZIP](https://github.com/Akshatb848/lazy-job-hunter/archive/refs/heads/main.zip)** and unzip it, for example to `Documents\lazy-job-hunter-main`.
+2. Open that folder, click the address bar at the top, type `powershell` and press Enter. A blue/black PowerShell window opens **in that folder**.
+3. Install the parts it needs:
+   ```
+   python -m pip install -r requirements.txt
+   ```
+   If it says `python` is not found, use `py` instead of `python` in every command of this guide.
+4. Quick check (should end with `0 failed`):
+   ```
+   python test_guard.py
+   ```
 
-## 2. Add an AI key
-The tool tries **Claude (Anthropic)** first and switches to **NVIDIA Nemotron** automatically if there's no Claude key, no credits left, or Claude is down. You need at least one.
+## Step 3. Get a free AI key (3 min)
+The tool uses **Claude** if you add a Claude key, otherwise **NVIDIA** (free). You need at least one.
 
-**Claude (best quality, paid per use):** create a key at [console.anthropic.com](https://console.anthropic.com) (Settings → API Keys) and add a few dollars of credit. A daily run uses roughly 25–30 short AI calls. Copy the key, then run:
-```
-python save_anthropic_key.py
-```
-It saves the key from your clipboard, tells you whether the account has credits, and clears the clipboard.
-**NVIDIA (free backup):** sign in at [build.nvidia.com](https://build.nvidia.com), open any model, click **Get API Key**, and copy it:
-```
-setx NVIDIA_API_KEY "paste-your-key-here"
-```
-Close PowerShell and open it again so the keys are picked up. Never paste a key into chats or screenshots.
+**NVIDIA (free):**
+1. Sign in at [build.nvidia.com](https://build.nvidia.com), open any model, click **Get API Key**, and copy the key.
+2. Save it (replace the text in quotes with your key):
+   ```
+   setx NVIDIA_API_KEY "paste-your-key-here"
+   ```
 
-## 3. Make your Telegram bot
-1. In Telegram, open **@BotFather** (blue tick) → send `/newbot` → give it a name → give it a username ending in `bot`.
-2. Tap the token BotFather sends you (it copies), then run:
+**Claude (optional, better tailoring, paid per use):** create a key at [console.anthropic.com](https://console.anthropic.com) → API Keys, add a few dollars of credit, copy the key, then run `python save_anthropic_key.py`. It saves the key from your clipboard, checks it, and clears the clipboard. When the credit runs out, the tool switches to NVIDIA by itself.
+
+Never paste a key into a chat, a comment or a screenshot.
+
+## Step 4. Make your Telegram bot (4 min)
+1. In Telegram, search **@BotFather** (blue tick) → tap Start → send `/newbot` → type any name → type a username ending in `bot` (for example `rahul_jobs_bot`).
+2. BotFather sends a long token. Tap it to copy, then run:
    ```
    python save_token.py
    ```
-   It saves the token from your clipboard and clears the clipboard. Never post this token anywhere.
-3. Open your new bot in Telegram and press **Start**.
-4. Run `python telegram_setup.py`. It prints your chat ID. Save it:
+3. In Telegram, open your new bot and press **Start** (or send "hi").
+4. Run:
    ```
-   setx TELEGRAM_CHAT_ID "your-chat-id"
+   python telegram_setup.py
    ```
-5. Run `python telegram_setup.py` again. You should get "Lazy Job Hunter is connected" in Telegram.
+   It finds your chat, saves it, and sends **"✅ Lazy Job Hunter is connected"** to your Telegram.
 
-## 4. Turn your resume into a profile
+## Step 5. Turn your resume into a profile (2 min)
 ```
-python make_profile.py "C:\path\to\your_resume.pdf" --roles "data analyst, business analyst" --cities "Bengaluru, Pune, Remote"
+python make_profile.py "C:\Users\YOU\Downloads\your_resume.pdf" --roles "data analyst, business analyst" --cities "Bengaluru, Pune, Remote"
 ```
-- `--roles`: the job titles you want (leave it out and it suggests some from your resume).
+- Tip: drag your resume file into the PowerShell window to paste its full path.
+- `--roles`: the job titles you want. Leave it out and it suggests roles from your resume.
 - `--cities`: where you'd work.
 
-It copies your resume word for word. Any line it can't find exactly in your resume is dropped and listed. Open the file it saves in `profiles\` and check it once.
+It copies your resume word for word; any line it can't find exactly in your resume is dropped and listed. It prints the file it saved, like `profiles\rahul.json`. Open it once in Notepad and check it.
 
-## 5. First run
-```
-python jobhunter.py --profile profiles\yourname.json
-```
-It takes 2–4 minutes. The first run looks at every open India job on the boards; after that, each run only shows jobs posted since the last one.
+Want to try it before using your own resume? Use the fictional one: `python make_profile.py examples\sample_resume_fictional.pdf`
 
-## 6. Check before you apply
-- Open the tailored PDF. Lines it reworded are in your words, just reordered and sharpened. If anything reads wrong, fix it before sending.
-- The `*_review.pdf` in the `runs\` folder shows exactly what changed (yellow) and what's missing for the job.
+## Step 6. Your first run (3 min)
+```
+python jobhunter.py --profile profiles\rahul.json
+```
+(use the file name from step 5). It checks about 6,000 jobs, picks your top 3, tailors 3 resumes and sends everything to Telegram. **Your first top 3 is in your Telegram.** 🎉
 
-## 7. Every morning at 7:50 AM
-Add your profile path to `daily_profiles.txt` (one line), then run once:
-```
-powershell -ExecutionPolicy Bypass -File install_schedule.ps1
-```
-Your laptop needs to be on or asleep (not shut down) at 7:50. If it was off, it runs as soon as you start it.
-To stop it: `Unregister-ScheduledTask -TaskName LazyJobHunter-Daily -Confirm:$false`
+Before you apply: open the tailored PDF and read it. The reworded lines use only your facts, but you're the one sending it.
+
+## Step 7. Every morning at 7:50 AM (1 min)
+1. Open `daily_profiles.txt` in Notepad, replace the example line with your profile path (for example `profiles/rahul.json`) and save.
+2. Run once:
+   ```
+   powershell -ExecutionPolicy Bypass -File install_schedule.ps1
+   ```
+Your laptop must be on or asleep (not shut down) at 7:50. If it was off, the run happens as soon as you start it.
+To stop it any time: `Unregister-ScheduledTask -TaskName LazyJobHunter-Daily -Confirm:$false`
 
 ---
 
-## Honest limits
-- **Where jobs come from:** 34 company career boards that publish jobs openly (Greenhouse, Lever, Ashby): Stripe, Databricks, MongoDB, Okta, Zscaler, Paytm, CRED, Groww, Meesho, Atlan, Rubrik and more. It does **not** read LinkedIn or Naukri.
-- **Freshers:** these boards have fewer fresher roles. Some mornings you may get "no strong matches"; it says so instead of padding the list.
-- **Scores are a guide**, not a promise. In our test, an independent check agreed with the top 3 for a 2-year backend developer, but not every profile and day will be that clean.
-- **No interviews are promised.** It saves you the 2 hours of searching; the applying is still yours.
+## ✅ Done? Tell me
+DM **"DONE"** to **[@the_lazy_automator](https://www.instagram.com/the_lazy_automator/)** on Instagram with a screenshot of your first Telegram message, and star ⭐ the repo. It tells me the guide works, and I'll keep improving it.
 
 ## If something breaks
-| Message | Fix |
+| You see | Fix |
 |---|---|
-| `TELEGRAM_BOT_TOKEN is not set` | Redo step 3.2, then reopen PowerShell |
-| `Telegram rejected the token` | Copy the token again from BotFather (`/mybots` → your bot → API Token) |
-| `Could not read enough text from the resume` | Export your resume again as a text PDF or DOCX |
-| `Couldn't score today's jobs: ...` | Both AI services failed (no Claude credits and NVIDIA busy or rate-limited); it tries again tomorrow. `runs\<latest>\run.json` → `llm_calls` shows which AI answered and why Claude was skipped |
-| PDFs come as `.html` | Install Chrome or Edge |
+| `python is not recognized` | Use `py` instead of `python`, or reinstall Python with "Add python.exe to PATH" ticked |
+| `No AI key found` | Redo step 3, then open a new PowerShell window in the folder |
+| `TELEGRAM_BOT_TOKEN is not set` | Redo step 4.2 (copy the token again first) |
+| `Telegram rejected the token` | In BotFather: `/mybots` → your bot → API Token → copy, then `python save_token.py` |
+| `No messages yet` | Open your bot in Telegram, press Start, then run `python telegram_setup.py` again |
+| `Could not read enough text from the resume` | Export your resume again as a text PDF or Word file |
+| `Profile not found` | Use the exact file name that step 5 printed |
+| `Couldn't score today's jobs` | The AI service was busy or out of credit. It tries again tomorrow |
+| `No strong matches today` | Normal on some days, especially for fresher roles. Add more `--roles` in step 5 |
+| Resumes come as `.html` files | Install Google Chrome or Microsoft Edge |
+
+Still stuck? Open an [issue](https://github.com/Akshatb848/lazy-job-hunter/issues/new) with the exact error (never your keys), or DM on Instagram.
+
+## Mac
+Steps 1 to 6 work the same in Terminal, with `python3` instead of `python` and `/` instead of `\` in paths. The key helpers (`save_token.py`, `save_anthropic_key.py`) are Windows-only, so on a Mac add your keys to `~/.zshrc` instead, then open a new Terminal:
+```
+export NVIDIA_API_KEY="your-key"
+export TELEGRAM_BOT_TOKEN="token-from-botfather"
+export TELEGRAM_CHAT_ID="number-printed-by-telegram_setup.py"
+```
+For the daily run, add this line with `crontab -e`:
+```
+50 7 * * * cd /path/to/lazy-job-hunter-main && python3 jobhunter.py --profile profiles/rahul.json
+```
+
+## Honest limits
+- Jobs come from 34 public company career boards (Greenhouse, Lever, Ashby). It does not scrape LinkedIn or Naukri.
+- Fresher roles are thinner on these boards; on a weak day it says so instead of padding the list.
+- Scores are a guide, not a promise. No interviews are promised. Applying is still yours.

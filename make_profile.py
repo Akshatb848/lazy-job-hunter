@@ -36,7 +36,10 @@ RESUME:
 def read_resume(path):
     ext = os.path.splitext(path)[1].lower()
     if ext == '.pdf':
-        import fitz
+        try:
+            import pymupdf as fitz
+        except ImportError:
+            import fitz
         with fitz.open(path) as d:
             t = '\n'.join(p.get_text() for p in d)
         return re.sub(r'(?<=\w)-\n(?=\w)', '-', t)  # rejoin words the PDF wrapped at a hyphen

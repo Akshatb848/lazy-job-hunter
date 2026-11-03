@@ -393,6 +393,11 @@ def main():
     ap.add_argument('--baseline', action='store_true', help='mark every current India job as seen and stop (no AI, no message)')
     a = ap.parse_args()
     t0 = time.time()
+    if not a.baseline and not a.candidates_only and not (env('ANTHROPIC_API_KEY') or LLM_KEY):
+        sys.exit('No AI key found. Add a Claude key (python save_anthropic_key.py) or a free NVIDIA key '
+                 '(setx NVIDIA_API_KEY "your-key"), then open a new PowerShell window. See SETUP.md step 2.')
+    if not os.path.exists(a.profile):
+        sys.exit(f'Profile not found: {a.profile}. Make one first: python make_profile.py your_resume.pdf (SETUP.md step 4).')
     prof = json.load(open(a.profile, encoding='utf-8'))
     stamp = dt.datetime.now(IST).strftime('%Y%m%d-%H%M%S')
     rd = os.path.join(HERE, 'runs', f'{stamp}_{prof["id"]}{("_" + a.label) if a.label else ""}')
@@ -481,6 +486,10 @@ def main():
                  else f"Top {len(top)} for you:\n") + '\n'.join(
             f"{i+1}. {t['job']['title']} · {t['job']['company']} · {t['score']['score']}% match" for i, t in enumerate(top))
     msgs = [{'text': head}]
+    if log.get('first_run') and top:
+        msgs.append({'text': ('🎉 Setup done! From tomorrow this arrives every morning before 8 AM.\n\n'
+                              'Kaam aaya? Instagram pe @the_lazy_automator ko DM karo "DONE" (ek screenshot ke saath) 🙌\n'
+                              'Aur kisi dost ko bhejo jo roz job portals scroll karta hai.')})
     for i, t in enumerate(top):
         s = t['score']
         body = (f"#{i+1} {t['job']['title']}\n{t['job']['company']} · {t['job']['location']} · {s['score']}% match\n\n"
