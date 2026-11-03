@@ -21,6 +21,7 @@ It never applies for you. You read the 3 jobs and apply yourself.
 - Telegram on your phone
 
 ## 1. Download and install
+Download the ZIP: [github.com/Akshatb848/lazy-job-hunter/archive/refs/heads/main.zip](https://github.com/Akshatb848/lazy-job-hunter/archive/refs/heads/main.zip) (or **Code → Download ZIP** on the repo page).
 Unzip the folder anywhere, for example `D:\jobhunter`. Open PowerShell in that folder and run:
 ```
 pip install -r requirements.txt
