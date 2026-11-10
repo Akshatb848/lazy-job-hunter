@@ -16,7 +16,7 @@ Usage:
   python jobhunter.py --profile ... --candidates-only                     # stop after filtering (for blind labelling)
   python jobhunter.py --profile ... --from-candidates runs/<dir>/candidates.json
 """
-import argparse, concurrent.futures as cf, datetime as dt, html, json, os, re, subprocess, sys, time, urllib.request, uuid
+import argparse, concurrent.futures as cf, datetime as dt, html, json, os, re, subprocess, sys, time, urllib.parse, urllib.request, uuid
 
 from guard import Guard
 
@@ -96,7 +96,46 @@ def fetch_source(src):
             jobs.append({'id': f'as:{tok}:{j.get("id")}', 'company': co, 'title': j.get('title', ''),
                          'location': ' / '.join(filter(None, locs)), 'url': j.get('jobUrl', ''),
                          'updated': j.get('publishedAt', ''), 'desc': j.get('descriptionPlain') or strip_html(j.get('descriptionHtml', ''))})
+    elif t == 'smartrecruiters':
+        # public postings API, India only; description comes from the detail call (job_desc)
+        offset = 0
+        while True:
+            page = http_json(f'https://api.smartrecruiters.com/v1/companies/{tok}/postings?country=in&limit=100&offset={offset}')
+            for j in page.get('content', []):
+                loc = (j.get('location') or {}).get('fullLocation') or ((j.get('location') or {}).get('city', '') + ', India')
+                jobs.append({'id': f'sr:{tok}:{j["id"]}', 'company': co, 'title': j.get('name', ''),
+                             'location': loc, 'url': f'https://jobs.smartrecruiters.com/{tok}/{j["id"]}',
+                             'updated': j.get('releasedDate', ''), 'desc': None, 'detail_url': j.get('ref'), 'detail_kind': 'sr'})
+            offset += 100
+            if offset >= min(page.get('totalFound', 0), 500):
+                break
     return jobs
+
+
+def fetch_adzuna(prof):
+    """Optional: Adzuna India job search API (free developer key: developer.adzuna.com).
+    Runs only when ADZUNA_APP_ID and ADZUNA_APP_KEY are set. One search per target role, posts from the last 2 days.
+    Adzuna returns a description snippet, not the full text, so scores from it are rougher."""
+    app_id, app_key = env('ADZUNA_APP_ID'), env('ADZUNA_APP_KEY')
+    if not (app_id and app_key):
+        return [], []
+    jobs, errors, seen_ids = [], [], set()
+    for role in prof['target_roles']:
+        q = urllib.parse.urlencode({'app_id': app_id, 'app_key': app_key, 'what_phrase': role, 'max_days_old': 2,
+                                    'results_per_page': 50, 'sort_by': 'date', 'content-type': 'application/json'})
+        try:
+            for j in http_json(f'https://api.adzuna.com/v1/api/jobs/in/search/1?{q}').get('results', []):
+                if j['id'] in seen_ids:
+                    continue
+                seen_ids.add(j['id'])
+                loc = (j.get('location') or {}).get('display_name', '')
+                jobs.append({'id': f'az:{j["id"]}', 'company': (j.get('company') or {}).get('display_name', ''),
+                             'title': strip_html(j.get('title', '')), 'location': loc + ('' if INDIA.search(loc) else ', India'),
+                             'url': j.get('redirect_url', ''), 'updated': j.get('created', ''),
+                             'desc': strip_html(j.get('description', ''))})
+        except Exception as e:
+            errors.append({'source': f'adzuna:{role}', 'error': str(e)[:200]})
+    return jobs, errors
 
 
 def fetch_all(sources):
@@ -114,7 +153,13 @@ def fetch_all(sources):
 def job_desc(job):
     if job.get('desc') is None and job.get('detail_url'):
         try:
-            job['desc'] = strip_html(http_json(job['detail_url']).get('content', ''))
+            d = http_json(job['detail_url'])
+            if job.get('detail_kind') == 'sr':
+                secs = (d.get('jobAd') or {}).get('sections') or {}
+                job['desc'] = strip_html('\n'.join((secs.get(k) or {}).get('text', '') for k in ('jobDescription', 'qualifications', 'additionalInformation')))
+                job['url'] = d.get('postingUrl') or job['url']
+            else:
+                job['desc'] = strip_html(d.get('content', ''))
         except Exception:
             job['desc'] = ''
     return (job.get('desc') or '')[:6000]
@@ -414,6 +459,10 @@ def main():
         sources = json.load(open(os.path.join(HERE, 'sources.json')))
         say(f'Checking {len(sources)} company job boards...')
         jobs, errors = fetch_all(sources)
+        az_jobs, az_errors = fetch_adzuna(prof)
+        if az_jobs or az_errors:
+            say(f'Adzuna India: {len(az_jobs)} recent posts for your roles')
+        jobs += az_jobs; errors += az_errors
         india_jobs = [j for j in jobs if INDIA.search(j['location'])]
         new = [j for j in india_jobs if j['id'] not in seen]
         if a.baseline:

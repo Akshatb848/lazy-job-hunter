@@ -1,15 +1,17 @@
 # Lazy Job Hunter
 
-**Har subah 8 baje se pehle, Telegram pe aapki top 3 nayi jobs. Resume har job ke liye tailor, sirf aapke real facts se.**
+**Har subah 8 baje se pehle, Telegram pe sirf woh nayi jobs jo aapko fit hoti hain (max 3). Kisi din 3, kisi din ek bhi nahi. Resume har job ke liye tailor, sirf aapke real facts se.**
 
 Every morning before 8 AM your Telegram gets:
 
-- the **top 3 new jobs in India** that fit your resume, with a match score and the reasons
+- **up to 3 new jobs in India** that fit your resume, with a match score and the reasons. Some mornings there are none, because it only sends a job when it fits
 - what you're **missing** for each job (flagged, never added to your resume)
 - a **resume PDF tailored to each job**, using only facts already in your resume
 - a **referral message draft** for someone at that company
 
-It never applies for you. You read 3 jobs, you apply yourself.
+It never applies for you. You read the jobs, you apply yourself.
+
+**Works best for tech and software roles**, because it checks public company career boards, where most India openings are tech.
 
 ## 📱 Came here from Instagram?
 
@@ -19,7 +21,7 @@ Setup needs a **laptop** (Windows is easiest; Mac works too) and takes about **2
 
 1. **[Download the ZIP](https://github.com/Akshatb848/lazy-job-hunter/archive/refs/heads/main.zip)** and unzip it.
 2. Follow **[SETUP.md](SETUP.md)**, step by step.
-3. Your first top 3 lands in Telegram. 🎉
+3. Your first run checks every open India job on the boards, so your first matches land in Telegram right away. 🎉 After that, each morning looks only at jobs posted since the last run.
 
 **Cost:** free with a free NVIDIA AI key and a free Telegram bot. A Claude key is optional, for better tailoring.
 
@@ -28,7 +30,7 @@ Setup needs a **laptop** (Windows is easiest; Mac works too) and takes about **2
 ## What you get every morning
 *From a real run on a fictional test resume.*
 
-**1. Your top 3 jobs in Telegram, with why you fit**
+**1. Your matching jobs in Telegram, with why you fit**
 
 ![Top 3 jobs in Telegram](docs/telegram_top3.jpg)
 
@@ -48,7 +50,8 @@ Setup needs a **laptop** (Windows is easiest; Mac works too) and takes about **2
 - Everything runs on **your own laptop**. Your resume and keys never leave it, except the text sent to the AI to score and tailor.
 
 ## Honest limits
-- Jobs come from **34 public company career boards** (Greenhouse, Lever, Ashby): Rubrik, GitLab, Stripe, Databricks, Paytm, CRED, Groww and more. It does **not** scrape LinkedIn or Naukri.
+- Jobs come from **83 free public company career boards** (Greenhouse, Lever, Ashby, SmartRecruiters): Rubrik, GitLab, Stripe, Databricks, Paytm, CRED, Groww and more. It does **not** scrape LinkedIn or Naukri.
+- These boards post roughly **20 new India jobs a day in total**, across all roles. So after the first run, expect 0 to 3 matches a morning, not 3 every day. In our test runs from 4 to 9 Nov 2026, daily runs found 0 or 1 match per profile.
 - Fresher roles are thinner on these boards. On a weak day it says "no strong matches" instead of padding the list.
 - Scores are a guide, not a promise. No interviews are promised.
 

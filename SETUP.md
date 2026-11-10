@@ -1,6 +1,6 @@
 # Lazy Job Hunter: setup guide
 
-About **20 minutes, once**. After that your top 3 jobs arrive in Telegram every morning before 8 AM.
+About **20 minutes, once**. After that, every morning before 8 AM, Telegram gets the new jobs that fit you (up to 3). Some mornings there are none.
 
 **You need:** a laptop (Windows 10/11 is easiest, Mac notes at the end) · Telegram on your phone · your resume as a PDF or Word file (a text PDF, not a scanned photo) · Google Chrome or Microsoft Edge.
 
@@ -68,7 +68,9 @@ Want to try it before using your own resume? Use the fictional one: `python make
 ```
 python jobhunter.py --profile profiles\rahul.json
 ```
-(use the file name from step 5). It checks about 6,000 jobs, picks your top 3, tailors 3 resumes and sends everything to Telegram. **Your first top 3 is in your Telegram.** 🎉
+(use the file name from step 5). The first run checks every open India job on the boards (about 10,000), picks up to 3 that fit, tailors a resume for each and sends everything to Telegram. **Your first matches are in your Telegram.** 🎉
+
+From the next morning it looks only at jobs posted since the last run, so most days bring 0 or 1 match.
 
 Before you apply: open the tailored PDF and read it. The reworded lines use only your facts, but you're the one sending it.
 
@@ -115,6 +117,6 @@ For the daily run, add this line with `crontab -e`:
 ```
 
 ## Honest limits
-- Jobs come from 34 public company career boards (Greenhouse, Lever, Ashby). It does not scrape LinkedIn or Naukri.
+- Jobs come from 83 free public company career boards (Greenhouse, Lever, Ashby, SmartRecruiters). It does not scrape LinkedIn or Naukri. They post about 20 new India jobs a day in total, so expect 0 to 3 matches a morning. Best for tech and software roles.
 - Fresher roles are thinner on these boards; on a weak day it says so instead of padding the list.
 - Scores are a guide, not a promise. No interviews are promised. Applying is still yours.

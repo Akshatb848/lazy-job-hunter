@@ -168,5 +168,250 @@
   "type": "lever",
   "token": "pocketfm",
   "company": "Pocketfm"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "swiggy",
+  "company": "Swiggy"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "servicenow",
+  "company": "Servicenow"
+ },
+ {
+  "type": "ashby",
+  "token": "sophos",
+  "company": "Sophos"
+ },
+ {
+  "type": "ashby",
+  "token": "tekion",
+  "company": "Tekion"
+ },
+ {
+  "type": "greenhouse",
+  "token": "sumologic",
+  "company": "Sumologic"
+ },
+ {
+  "type": "greenhouse",
+  "token": "highradius",
+  "company": "Highradius"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "freshworks",
+  "company": "Freshworks"
+ },
+ {
+  "type": "greenhouse",
+  "token": "fivetran",
+  "company": "Fivetran"
+ },
+ {
+  "type": "ashby",
+  "token": "snowflake",
+  "company": "Snowflake"
+ },
+ {
+  "type": "ashby",
+  "token": "spotdraft",
+  "company": "Spotdraft"
+ },
+ {
+  "type": "greenhouse",
+  "token": "godaddy",
+  "company": "Godaddy"
+ },
+ {
+  "type": "greenhouse",
+  "token": "block",
+  "company": "Block"
+ },
+ {
+  "type": "greenhouse",
+  "token": "thoughtworks",
+  "company": "Thoughtworks"
+ },
+ {
+  "type": "greenhouse",
+  "token": "zenoti",
+  "company": "Zenoti"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "grab",
+  "company": "Grab"
+ },
+ {
+  "type": "ashby",
+  "token": "gainsight",
+  "company": "Gainsight"
+ },
+ {
+  "type": "ashby",
+  "token": "amplitude",
+  "company": "Amplitude"
+ },
+ {
+  "type": "lever",
+  "token": "spotify",
+  "company": "Spotify"
+ },
+ {
+  "type": "greenhouse",
+  "token": "stage",
+  "company": "Stage"
+ },
+ {
+  "type": "lever",
+  "token": "linkedin",
+  "company": "Linkedin"
+ },
+ {
+  "type": "ashby",
+  "token": "kong",
+  "company": "Kong"
+ },
+ {
+  "type": "ashby",
+  "token": "clickhouse",
+  "company": "Clickhouse"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "mindtickle",
+  "company": "Mindtickle"
+ },
+ {
+  "type": "greenhouse",
+  "token": "datadog",
+  "company": "Datadog"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "ixigo",
+  "company": "Ixigo"
+ },
+ {
+  "type": "greenhouse",
+  "token": "jfrog",
+  "company": "Jfrog"
+ },
+ {
+  "type": "greenhouse",
+  "token": "observeai",
+  "company": "Observeai"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "hackerrank",
+  "company": "Hackerrank"
+ },
+ {
+  "type": "greenhouse",
+  "token": "newrelic",
+  "company": "Newrelic"
+ },
+ {
+  "type": "greenhouse",
+  "token": "mixpanel",
+  "company": "Mixpanel"
+ },
+ {
+  "type": "ashby",
+  "token": "redis",
+  "company": "Redis"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "unacademy",
+  "company": "Unacademy"
+ },
+ {
+  "type": "greenhouse",
+  "token": "yugabyte",
+  "company": "Yugabyte"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "cars24",
+  "company": "Cars24"
+ },
+ {
+  "type": "greenhouse",
+  "token": "cockroachlabs",
+  "company": "Cockroachlabs"
+ },
+ {
+  "type": "greenhouse",
+  "token": "duolingo",
+  "company": "Duolingo"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "gainsight",
+  "company": "Gainsight"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "interviewbit",
+  "company": "Interviewbit"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "lendingkart",
+  "company": "Lendingkart"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "newtonschool",
+  "company": "Newtonschool"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "upstox",
+  "company": "Upstox"
+ },
+ {
+  "type": "greenhouse",
+  "token": "vercel",
+  "company": "Vercel"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "whatfix",
+  "company": "Whatfix"
+ },
+ {
+  "type": "greenhouse",
+  "token": "purestorage",
+  "company": "Purestorage"
+ },
+ {
+  "type": "ashby",
+  "token": "bureau",
+  "company": "Bureau"
+ },
+ {
+  "type": "lever",
+  "token": "acceldata",
+  "company": "Acceldata"
+ },
+ {
+  "type": "greenhouse",
+  "token": "sigmoid",
+  "company": "Sigmoid"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "loophealth",
+  "company": "Loophealth"
+ },
+ {
+  "type": "smartrecruiters",
+  "token": "nobroker",
+  "company": "Nobroker"
  }
 ]
